@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }
     }
-
     private fun backGroundColorChanged() {
         if (ColorChecker(parentView).isLight()) {
 //            현재 어두움.
@@ -61,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         pager.adapter = adapter
         pager.setPageTransformer(MarginPageTransformer(1500))
+        pager.offscreenPageLimit = adapter.itemCount
 
         val tabLayoutMediator =
             TabLayoutMediator(tabs, pager, true, TabLayoutMediator.OnConfigureTabCallback { tab, position ->
