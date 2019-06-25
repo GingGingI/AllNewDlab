@@ -28,5 +28,7 @@ class retrofitUtil(context: Context) {
     interface retrofitService {
         @POST("/sendfood")
         fun getFoodDatas(): Call<ItemModel>
+        @POST("/getAllCalendar")
+        fun getCalendarDatas(): Call<ItemModel>
     }
 }

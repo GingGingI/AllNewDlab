@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         val tabLayoutMediator =
             TabLayoutMediator(tabs, pager, true, TabLayoutMediator.OnConfigureTabCallback { tab, position ->
-            tab.text = when(position) {0 -> {"급식"} 1 -> {"달력"} else -> {"테스트"} }
+            tab.text = when(position) {0 -> {"급식"} 1 -> {"이번달 일정"} else -> {"테스트"} }
         }).attach()
     }
 
