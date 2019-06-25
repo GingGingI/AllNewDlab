@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AllNewDlab</string>
+    <string name="Server_url">http://www.ginggingi.com</string>
 </resources>
