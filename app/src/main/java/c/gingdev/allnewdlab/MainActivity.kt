@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         initStatusBar()
         setFragment()
+        setNavigation()
 
         Runnable {
             backGroundColorChanged()
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         clearStatusBar()
         statusBar.layoutParams = ConstraintLayout.LayoutParams(statusBar.width, getStatusBarHeight())
     }
-
     private fun clearStatusBar() {
         window.apply {
             setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -77,15 +77,22 @@ class MainActivity : AppCompatActivity() {
         adapter.addItem(foodFragment.getInstance())
         adapter.addItem(calendarFragment.getInstance())
 
-        pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        pager.adapter = adapter
-        pager.setPageTransformer(MarginPageTransformer(1500))
-        pager.offscreenPageLimit = adapter.itemCount
-
-        val tabLayoutMediator =
-            TabLayoutMediator(tabs, pager, true, TabLayoutMediator.OnConfigureTabCallback { tab, position ->
-            tab.text = when(position) {0 -> {"급식"} 1 -> {"이번달 일정"} else -> {"테스트"} }
-        }).attach()
+        pager.apply {
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            this@apply.adapter = this@MainActivity.adapter
+            setPageTransformer(MarginPageTransformer(1500))
+            offscreenPageLimit = this@MainActivity.adapter.itemCount
+            isUserInputEnabled = false }
     }
 
+    private fun setNavigation() {
+        bottomNav.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.food -> { pager.setCurrentItem(0, true) }
+                R.id.calendar -> { pager.setCurrentItem(1, true) }
+                else -> { pager.setCurrentItem(0, true) }
+            }
+            return@setOnNavigationItemSelectedListener true
+        }
+    }
 }
