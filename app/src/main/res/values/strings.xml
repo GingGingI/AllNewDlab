@@ -8,5 +8,6 @@
     <string name="errorString">\?\?\?</string>
 
     <string name="setGrade">학년반 재설정</string>
+    <string name="createBy">개발자 정보</string>
     <string name="openSource">오픈소스 정보</string>
 </resources>

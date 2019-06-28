@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import c.gingdev.allnewdlab.R
+import c.gingdev.allnewdlab.createBy
+import c.gingdev.allnewdlab.grade
+import c.gingdev.allnewdlab.openSource
 import kotlinx.android.synthetic.main.layout_option_items.view.*
 
 
@@ -19,6 +22,17 @@ class optionHolder(val parent: ViewGroup)
 
         itemView.setOnClickListener {
             Toast.makeText(parent.context, "itemID : $itemId", Toast.LENGTH_SHORT).show()
+            when(itemId) {
+                grade -> {
+
+                }
+                createBy -> {
+
+                }
+                openSource -> {
+
+                }
+            }
         }
     }
 }

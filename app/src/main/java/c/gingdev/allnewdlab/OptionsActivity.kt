@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.activity_options.*
 import kotlinx.android.synthetic.main.activity_options.recycler
 
 const val grade = 100
-const val openSource = 200
+const val createBy = 200
+const val openSource = 1000
 class OptionsActivity: AppCompatActivity() {
 
     lateinit var revealActivity: revealAnimation
@@ -74,6 +75,7 @@ class OptionsActivity: AppCompatActivity() {
     private fun initLayout() {
         val arrays = ArrayList<Pair<Int, String>>()
         arrays.add(Pair(grade, resources.getString(R.string.setGrade)))
+        arrays.add(Pair(createBy, resources.getString(R.string.createBy)))
         arrays.add(Pair(openSource, resources.getString(R.string.openSource)))
 
         adapter = optionAdapter(arrays).also {
