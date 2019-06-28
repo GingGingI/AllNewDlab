@@ -20,7 +20,6 @@ class SplashActivity: AppCompatActivity() {
                     finish() }
         }, 2000)
     }
-
     private fun clearStatusBar() {
         window.apply {
             setFlags(

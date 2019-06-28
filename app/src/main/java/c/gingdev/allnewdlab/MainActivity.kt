@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         }.run()
     }
 
-
     private fun initStatusBar() {
         clearStatusBar()
         statusBar.layoutParams = ConstraintLayout.LayoutParams(statusBar.width, getStatusBarHeight())
