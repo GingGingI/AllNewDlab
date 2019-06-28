@@ -1,24 +1,22 @@
 package c.gingdev.allnewdlab
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.StateListDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import c.gingdev.allnewdlab.fragments.calendarFragment
 import c.gingdev.allnewdlab.fragments.foodFragment
-import c.gingdev.allnewdlab.utils.ColorChecker
-import c.gingdev.allnewdlab.utils.fragmentPagerAdapter
-import c.gingdev.allnewdlab.utils.monthlyColor
+import c.gingdev.allnewdlab.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,11 +27,13 @@ class MainActivity : AppCompatActivity() {
         initStatusBar()
         setFragment()
         setNavigation()
+        initLayout()
 
         Runnable {
             backGroundColorChanged()
         }.run()
     }
+
 
     private fun initStatusBar() {
         clearStatusBar()
@@ -70,6 +70,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         options.setColorFilter(color)
+    }
+
+    private fun initLayout() {
+        options.setOnClickListener {
+            startRevealActivity(it) }
     }
 
     private lateinit var adapter: fragmentPagerAdapter
@@ -124,5 +129,19 @@ class MainActivity : AppCompatActivity() {
             highlitedColor)
 
         return ColorStateList(states, colors)
+    }
+
+    private fun startRevealActivity(view: View) {
+        val revealX = (view.x + view.width / 2).toInt()
+        val revealY = (view.y + view.height / 2).toInt()
+
+        val i = Intent(this, OptionsActivity::class.java)
+            .apply {
+                flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                putExtra(EXTRA_CIRCULAR_REVEAL_X, revealX)
+                putExtra(EXTRA_CIRCULAR_REVEAL_Y, revealY) }
+
+        ActivityCompat.startActivity(this@MainActivity, i, null)
+        overridePendingTransition(0, 0)
     }
 }
