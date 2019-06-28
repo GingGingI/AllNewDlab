@@ -22,7 +22,7 @@ class foodAdapter(private val items: List<String>): RecyclerView.Adapter<foodHol
         = when (position) {
             0 -> { Rice }
             1 -> { Soup }
-        else -> { SideDish }
+            else -> { SideDish }
     }
 
 }

@@ -7,12 +7,15 @@
 
         android:layout_marginBottom="6dp">
 
-    <ImageView
-            android:id="@+id/icon"
+    <TextView
+            android:id="@+id/date"
             android:layout_width="45dp"
             android:layout_height="45dp"
 
-            android:src="@drawable/ic_rice"
+            android:text=""
+            android:textSize="35sp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/content"
@@ -31,7 +34,7 @@
             android:layout_marginStart="12dp"
 
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintStart_toEndOf="@id/date"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

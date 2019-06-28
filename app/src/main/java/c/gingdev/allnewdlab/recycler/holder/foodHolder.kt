@@ -26,7 +26,8 @@ class foodHolder(val parent: ViewGroup)
         = when(type) {
         Rice -> { parent.context.resources.getDrawable(R.drawable.ic_rice) }
         Soup -> { parent.context.resources.getDrawable(R.drawable.ic_soup) }
-        else -> parent.context.resources.getDrawable(R.drawable.ic_side_dish)
+        SideDish -> { parent.context.resources.getDrawable(R.drawable.ic_side_dish) }
+        else -> { null }
     }
 
 }

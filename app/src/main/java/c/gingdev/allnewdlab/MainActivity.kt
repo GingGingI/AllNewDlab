@@ -1,12 +1,14 @@
 package c.gingdev.allnewdlab
 
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.drawable.StateListDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
-import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -16,7 +18,8 @@ import c.gingdev.allnewdlab.fragments.calendarFragment
 import c.gingdev.allnewdlab.fragments.foodFragment
 import c.gingdev.allnewdlab.utils.ColorChecker
 import c.gingdev.allnewdlab.utils.fragmentPagerAdapter
-import com.google.android.material.tabs.TabLayoutMediator
+import c.gingdev.allnewdlab.utils.monthlyColor
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity() {
             isUserInputEnabled = false }
     }
 
+    private val mColor = monthlyColor.getInstance()
     private fun setNavigation() {
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -94,5 +98,23 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            buildColorStateList(mColor.getMonthlyColor(this))
+                .also {
+                    bottomNav.itemTextColor = it
+                    bottomNav.itemIconTintList = it }
+        }
+    }
+    private fun buildColorStateList(highlitedColor: Int): ColorStateList {
+        val states = arrayOf(
+            intArrayOf(-android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_checked)
+        )
+        val colors = intArrayOf(
+            Color.parseColor("#747474"),
+            highlitedColor)
+
+        return ColorStateList(states, colors)
     }
 }

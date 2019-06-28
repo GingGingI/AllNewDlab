@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#FFAA36</color>
+    <color name="colorPrimaryDark">#FF970B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="none">#00000000</color>
 
@@ -10,4 +10,18 @@
     <color name="colorGray">#FF888888</color>
     <color name="colorWhite">#FFEEEEEE</color>
     <color name="colorRealWhite">#FFFFFFFF</color>
+
+    <color name="month1">#1a9ba3</color>
+    <color name="month2">#299a8b</color>
+    <color name="month3">#54aa78</color>
+    <color name="month4">#77b277</color>
+    <color name="month5">#94b674</color>
+    <color name="month6">#c9de7e</color>
+    <color name="month7">#ebd877</color>
+    <color name="month8">#e49d67</color>
+    <color name="month9">#f37781</color>
+    <color name="month10">#9b5085</color>
+    <color name="month11">#646598</color>
+    <color name="month12">#4f77a4</color>
+
 </resources>
