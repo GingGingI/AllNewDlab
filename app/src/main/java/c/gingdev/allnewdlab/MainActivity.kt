@@ -19,7 +19,6 @@ import c.gingdev.allnewdlab.fragments.foodFragment
 import c.gingdev.allnewdlab.utils.ColorChecker
 import c.gingdev.allnewdlab.utils.fragmentPagerAdapter
 import c.gingdev.allnewdlab.utils.monthlyColor
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun clearStatusBar() {
         window.apply {
-            setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }
     }
@@ -92,9 +91,18 @@ class MainActivity : AppCompatActivity() {
     private fun setNavigation() {
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.food -> { pager.setCurrentItem(0, true) }
-                R.id.calendar -> { pager.setCurrentItem(1, true) }
-                else -> { pager.setCurrentItem(0, true) }
+                R.id.food -> {
+                    pager.setCurrentItem(0, true)
+                    pagerTitle.text = resources.getText(R.string.todaysLunch)
+                }
+                R.id.calendar -> {
+                    pager.setCurrentItem(1, true)
+                    pagerTitle.text = resources.getText(R.string.monthlySchedule)
+                }
+                else -> {
+                    pager.setCurrentItem(0, true)
+                    pagerTitle.text = resources.getText(R.string.errorString)
+                }
             }
             return@setOnNavigationItemSelectedListener true
         }

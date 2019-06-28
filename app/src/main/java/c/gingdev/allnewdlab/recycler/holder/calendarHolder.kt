@@ -24,7 +24,6 @@ class calendarHolder(val parent: ViewGroup)
 
     private val reg = Regex("""[^0-9]""")
     private fun divideItem(item: String): Pair<String, String> {
-        Log.e("split", item.split(":")[0])
         val date = reg.replace(item.split(":")[0], "")
         val content = item.split(":")[1]
 

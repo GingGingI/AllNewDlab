@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite"
+        android:background="@color/colorRealWhite"
 
         tools:context=".MainActivity">
 
@@ -37,7 +37,6 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
 
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
 
                 android:layout_centerVertical="true"
@@ -48,11 +47,11 @@
     </RelativeLayout>
 
     <TextView
-            android:id="@+id/title"
+            android:id="@+id/pagerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="오늘의 점심"
+            android:text="@string/todaysLunch"
             android:textSize="36sp"
             android:textColor="#333"
 
@@ -72,7 +71,7 @@
 
             android:overScrollMode="never"
 
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/pagerTitle"
             app:layout_constraintBottom_toTopOf="@id/bottomNav"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
