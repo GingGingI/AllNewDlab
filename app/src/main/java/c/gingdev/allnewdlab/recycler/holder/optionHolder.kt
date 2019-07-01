@@ -29,7 +29,8 @@ class optionHolder(val parent: ViewGroup)
 
                 }
                 openSource -> {
-
+                    Intent(parent.context, OptionsDetailActivity::class.java)
+                        .run { parent.context.startActivity(this) }
                 }
             }
         }

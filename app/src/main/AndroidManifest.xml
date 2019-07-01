@@ -21,8 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".OptionsActivity"/>
         <activity android:name=".GradeActivity"/>
+        <activity android:name=".OptionsActivity"/>
+        <activity android:name=".OptionsDetailActivity"/>
     </application>
 
 </manifest>
