@@ -5,7 +5,7 @@ import c.gingdev.allnewdlab.R
 import c.gingdev.allnewdlab.injections.retrofitInjection
 import c.gingdev.allnewdlab.models.ItemModel
 import retrofit2.Call
-import retrofit2.http.POST
+import retrofit2.http.*
 
 class retrofitUtil(context: Context) {
     private val retrofit = retrofitInjection
@@ -30,5 +30,7 @@ class retrofitUtil(context: Context) {
         fun getFoodDatas(): Call<ItemModel>
         @POST("/getAllCalendar")
         fun getCalendarDatas(): Call<ItemModel>
+        @GET("/getAllSchedule")
+        fun getScheduleDatas(@QueryMap params: Map<String, String>): Call<ItemModel>
     }
 }

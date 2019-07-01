@@ -8,4 +8,8 @@
           android:enabled="true"
           android:icon="@drawable/ic_calendar"
           android:title="calendar"/>
+    <item android:id="@+id/schedule"
+          android:enabled="true"
+          android:icon="@drawable/ic_flask"
+          android:title="schedule"/>
 </menu>

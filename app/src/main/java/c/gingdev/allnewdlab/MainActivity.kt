@@ -12,10 +12,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
 import c.gingdev.allnewdlab.fragments.calendarFragment
 import c.gingdev.allnewdlab.fragments.foodFragment
+import c.gingdev.allnewdlab.fragments.scheduleFragment
 import c.gingdev.allnewdlab.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -76,19 +75,22 @@ class MainActivity : AppCompatActivity() {
             startRevealActivity(it) }
     }
 
-    private lateinit var adapter: fragmentPagerAdapter
-    private val fmList = arrayListOf<Fragment>()
+    private lateinit var fragmentAdpater: fragmentPagerAdapter
+    private val fmList = arrayListOf<Fragment>().apply {
+        add(foodFragment.getInstance())
+        add(calendarFragment.getInstance())
+        add(scheduleFragment.getInstance())
+    }
     private fun setFragment() {
-        adapter = fragmentPagerAdapter(supportFragmentManager, lifecycle)
-        adapter.addItem(foodFragment.getInstance())
-        adapter.addItem(calendarFragment.getInstance())
+        fragmentAdpater = fragmentPagerAdapter(supportFragmentManager)
+        fragmentAdpater.addItem(foodFragment())
+        fragmentAdpater.addItem(calendarFragment())
+        fragmentAdpater.addItem(scheduleFragment())
 
         pager.apply {
-            orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            this@apply.adapter = this@MainActivity.adapter
-            setPageTransformer(MarginPageTransformer(1500))
-            offscreenPageLimit = this@MainActivity.adapter.itemCount
-            isUserInputEnabled = false }
+            adapter = fragmentAdpater
+            offscreenPageLimit = fragmentAdpater.count
+        }
     }
 
     private val mColor = monthlyColor.getInstance()
@@ -102,6 +104,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.calendar -> {
                     pager.setCurrentItem(1, true)
                     pagerTitle.text = resources.getText(R.string.monthlySchedule)
+                }
+                R.id.schedule -> {
+                    pager.setCurrentItem(2, true)
+                    pagerTitle.text = resources.getText(R.string.classSchedule)
                 }
                 else -> {
                     pager.setCurrentItem(0, true)

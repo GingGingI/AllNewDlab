@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -18,8 +17,6 @@ class SplashActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Handler().postDelayed({
-            Log.e("Check", pref.PREF_GRADE.isNullOrEmpty().toString())
-            Log.e("Check", pref.PREF_CLASS.isNullOrEmpty().toString())
             if (!pref.PREF_GRADE.isNullOrEmpty() && !pref.PREF_CLASS.isNullOrEmpty())
                 Intent(this, MainActivity::class.java)
                     .run {

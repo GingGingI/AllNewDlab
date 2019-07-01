@@ -19,7 +19,6 @@ class optionHolder(val parent: ViewGroup)
         }
 
         itemView.setOnClickListener {
-            Toast.makeText(parent.context, "itemID : $itemId", Toast.LENGTH_SHORT).show()
             when(itemId) {
                 grade -> {
                     Intent(parent.context, GradeActivity::class.java)

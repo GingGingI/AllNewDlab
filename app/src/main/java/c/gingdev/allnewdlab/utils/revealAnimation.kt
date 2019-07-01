@@ -46,7 +46,7 @@ class revealAnimation {
 
             ViewAnimationUtils.createCircularReveal(view, x, y, 0f, finalRadius)
                 .apply {
-                    duration = 300
+                    duration = 150
                     interpolator = AccelerateInterpolator() }
                 .run {
                     view.visibility = View.VISIBLE
@@ -61,7 +61,7 @@ class revealAnimation {
 
         ViewAnimationUtils.createCircularReveal(view, revealX, revealY, finalRadius, 0f)
             .apply {
-                duration = 300
+                duration = 150
                 addListener(object: AnimatorListenerAdapter() {
                     override fun onAnimationEnd(animation: Animator?) {
                         view.visibility = View.INVISIBLE
