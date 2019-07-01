@@ -1,7 +1,6 @@
 package c.gingdev.allnewdlab.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_layout_calendar.*
 
 
 class calendarFragment: Fragment(),
+    baseInterface by baseFragment(),
     calendarFragmentConstract.view{
     companion object {
         private var Instance: Fragment? = null
@@ -35,6 +35,9 @@ class calendarFragment: Fragment(),
     private lateinit var presenter: calendarPresenter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAnim(view.context, loadingLottie)
+
+        startLoading()
         presenter = calendarPresenter(view.context, this)
 
         presenter.receiveCalendarData()
@@ -46,6 +49,7 @@ class calendarFragment: Fragment(),
             recycler.adapter = it
             recycler.layoutManager = LinearLayoutManager(context)
 
+            finishLoading()
             it.notifyDataSetChanged()
         }
     }
@@ -66,7 +70,7 @@ class calendarFragment: Fragment(),
     }
 
     override fun failedToReceive() {
+        finishLoading()
         Toast.makeText(context, "데이터 받아오기 실패!", Toast.LENGTH_SHORT).show()
     }
-
 }

@@ -1,5 +1,6 @@
 package c.gingdev.allnewdlab.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import c.gingdev.allnewdlab.recycler.adapter.foodAdapter
 import kotlinx.android.synthetic.main.fragment_layout_food.*
 
 class foodFragment: Fragment(),
+    baseInterface by baseFragment(),
     foodFragmentConstract.view {
     companion object {
         private var Instance: Fragment? = null
@@ -33,6 +35,9 @@ class foodFragment: Fragment(),
     private lateinit var presenter: foodPresenter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAnim(view.context, loadingLottie)
+
+        startLoading()
         presenter = foodPresenter(view.context, this)
 
         presenter.receiveFoodData()
@@ -44,6 +49,7 @@ class foodFragment: Fragment(),
             recycler.adapter = it
             recycler.layoutManager = LinearLayoutManager(context)
 
+            finishLoading()
             it.notifyDataSetChanged()
         }
     }
@@ -61,6 +67,7 @@ class foodFragment: Fragment(),
     }
 
     override fun failedToReceive() {
+        finishLoading()
         Toast.makeText(context, "데이터 받아오기 실패!", Toast.LENGTH_SHORT).show()
     }
 

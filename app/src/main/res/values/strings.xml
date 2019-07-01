@@ -10,4 +10,10 @@
     <string name="setGrade">학년반 재설정</string>
     <string name="createBy">개발자 정보</string>
     <string name="openSource">오픈소스 정보</string>
+
+    <string name="Grade">학년</string>
+    <string name="Class">반</string>
+    <string name="NeedClassInfo">[학년, 반]을 입력해주세요</string>
+
+    <string name="done">Done</string>
 </resources>
