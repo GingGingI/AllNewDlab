@@ -25,14 +25,15 @@ class optionHolder(val parent: ViewGroup)
                         .apply { putExtra("isSetting", true) }
                         .run { parent.context.startActivity(this) }
                 }
-                createBy -> {
-
-                }
-                openSource -> {
-                    Intent(parent.context, OptionsDetailActivity::class.java)
-                        .run { parent.context.startActivity(this) }
-                }
+                createBy -> { OptionDetailIntent(developer) }
+                openSource -> { OptionDetailIntent(copyRight) }
             }
         }
+    }
+
+    private fun OptionDetailIntent(state: Int) {
+        Intent(parent.context, OptionsDetailActivity::class.java)
+            .apply { putExtra("state", state) }
+            .run { parent.context.startActivity(this) }
     }
 }

@@ -10,7 +10,7 @@ import c.gingdev.allnewdlab.R
 import c.gingdev.allnewdlab.recycler.adapter.copyRightAdapter
 import kotlinx.android.synthetic.main.fragment_layout_copyright.*
 
-class copyRightFragment: Fragment() {
+class developerInfoFragment: Fragment() {
     companion object {
         private var Instance: Fragment? = null
 
@@ -18,7 +18,7 @@ class copyRightFragment: Fragment() {
             Instance ?: buildFragment().also { Instance = it }
         }
 
-        private fun buildFragment(): Fragment = copyRightFragment()
+        private fun buildFragment(): Fragment = developerInfoFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -29,9 +29,8 @@ class copyRightFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arrays = arrayListOf(
-            Pair("https://github.com/square/retrofit", "retrofit"),
-            Pair("https://github.com/square/okhttp", "okhttp3"),
-            Pair("https://github.com/airbnb/lottie-android", "lottie-android"))
+            Pair(resources.getString(R.string.developer_1_mail), resources.getString(R.string.developer_1)),
+            Pair(resources.getString(R.string.developer_2_mail), resources.getString(R.string.developer_2)))
         setRecycler(arrays)
     }
 

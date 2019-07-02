@@ -30,7 +30,7 @@ class retrofitUtil(context: Context) {
         fun getFoodDatas(): Call<ItemModel>
         @POST("/getAllCalendar")
         fun getCalendarDatas(): Call<ItemModel>
-        @GET("/getAllSchedule")
+        @GET("/app/getAllSchedule")
         fun getScheduleDatas(@QueryMap params: Map<String, String>): Call<ItemModel>
     }
 }

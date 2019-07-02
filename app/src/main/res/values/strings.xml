@@ -1,15 +1,19 @@
 <resources>
-    <string name="app_name">AllNewDlab</string>
+    <string name="app_name">Dlab</string>
     <string name="Server_url">http://www.ginggingi.com</string>
 
     <string name="todaysLunch">오늘의 점심</string>
     <string name="monthlySchedule">이번달 일정</string>
     <string name="classSchedule">우리반 시간표</string>
 
+    <string name="lunch">급식</string>
+    <string name="monthly">일정</string>
+    <string name="schedule">시간표</string>
+
     <string name="errorString">\?\?\?</string>
 
     <string name="setGrade">학년반 재설정</string>
-    <string name="createBy">개발자 정보</string>
+    <string name="createBy">개발자 정보/문의 메일</string>
     <string name="openSource">오픈소스 정보</string>
 
     <string name="Grade">학년</string>
@@ -17,4 +21,9 @@
     <string name="NeedClassInfo">[학년, 반]을 입력해주세요</string>
 
     <string name="done">Done</string>
+
+    <string name="developer_1">윤종하</string>
+    <string name="developer_1_mail">gingjingi@gmail.com</string>
+    <string name="developer_2">정상현</string>
+    <string name="developer_2_mail">saup19@naver.com</string>
 </resources>

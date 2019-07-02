@@ -7,10 +7,12 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import c.gingdev.allnewdlab.fragments.copyRightFragment
+import c.gingdev.allnewdlab.fragments.developerInfoFragment
 import c.gingdev.allnewdlab.utils.ColorChecker
 import kotlinx.android.synthetic.main.activity_options_detail.*
 
-
+const val developer = 100
+const val copyRight = 200
 class OptionsDetailActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,13 +20,13 @@ class OptionsDetailActivity: AppCompatActivity() {
         setContentView(R.layout.activity_options_detail)
 
         initStatusBar()
+        checkIntentState()
         initFragment()
 
         Runnable {
             backGroundColorChanged()
         }.run()
     }
-
     private fun initStatusBar() {
         clearStatusBar()
         statusBar.layoutParams = ConstraintLayout.LayoutParams(statusBar.width, getStatusBarHeight())
@@ -56,10 +58,22 @@ class OptionsDetailActivity: AppCompatActivity() {
         }
     }
 
+    private var state: Int? = null
+    private fun checkIntentState() {
+        state = intent?.extras?.getInt("state")
+    }
+
     private val fm = supportFragmentManager
     private val transaction = fm.beginTransaction()
     private fun initFragment() {
-        transaction.replace(R.id.fragment, copyRightFragment.getInstance()).commit()
+        when(state) {
+            developer -> {
+                transaction.replace(R.id.fragment, developerInfoFragment.getInstance()).commit()
+            }
+            copyRight -> {
+                transaction.replace(R.id.fragment, copyRightFragment.getInstance()).commit()
+            }
+        }
     }
 
     override fun onBackPressed() {

@@ -9,7 +9,7 @@ class scheduleAdapter(private val items: List<String>): RecyclerView.Adapter<sch
             = scheduleHolder(parent = parent)
 
     override fun getItemCount(): Int
-            = items.size
+            = items.size - 1
 
     override fun onBindViewHolder(holder: scheduleHolder, position: Int) {
         holder.bind(items[position])

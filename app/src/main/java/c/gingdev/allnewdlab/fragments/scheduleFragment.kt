@@ -1,6 +1,7 @@
 package c.gingdev.allnewdlab.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,12 +58,18 @@ class scheduleFragment: Fragment(),
      *  Presenter
      */
     override fun successToReceive(item: ItemModel) {
-        val arrays = item
-            .template.outputs[0].simpleText.text.split("\r\n").toMutableList()
-            .apply { this[0] = this[0].split("\n")[this[0].split("\n").size - 1] }
-            .also { it.removeAt(0) }
+        if (!item.template.outputs[0].simpleText.text.contains("값없음")) {
+            val arrays = item
+                .template.outputs[0].simpleText.text.split("\n").toMutableList()
+                .also {
+                    it.removeAt(0)
+                    it.removeAt(0)
+                }
 
-        setRecycler(arrays.toList())
+            setRecycler(arrays.toList())
+        } else {
+            failedToReceive()
+        }
     }
 
     override fun failedToReceive() {
