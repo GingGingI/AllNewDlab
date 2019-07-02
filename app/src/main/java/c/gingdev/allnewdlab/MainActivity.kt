@@ -6,19 +6,21 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import c.gingdev.allnewdlab.fragments.calendarFragment
 import c.gingdev.allnewdlab.fragments.foodFragment
 import c.gingdev.allnewdlab.fragments.scheduleFragment
 import c.gingdev.allnewdlab.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -91,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             adapter = fragmentAdpater
             offscreenPageLimit = fragmentAdpater.count
         }
+        pager.addOnPageChangeListener(this)
     }
 
     private val mColor = monthlyColor.getInstance()
@@ -99,19 +102,15 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.food -> {
                     pager.setCurrentItem(0, true)
-                    pagerTitle.text = resources.getText(R.string.todaysLunch)
                 }
                 R.id.calendar -> {
                     pager.setCurrentItem(1, true)
-                    pagerTitle.text = resources.getText(R.string.monthlySchedule)
                 }
                 R.id.schedule -> {
                     pager.setCurrentItem(2, true)
-                    pagerTitle.text = resources.getText(R.string.classSchedule)
                 }
                 else -> {
                     pager.setCurrentItem(0, true)
-                    pagerTitle.text = resources.getText(R.string.errorString)
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -134,6 +133,29 @@ class MainActivity : AppCompatActivity() {
             highlitedColor)
 
         return ColorStateList(states, colors)
+    }
+
+
+    override fun onPageScrollStateChanged(state: Int) {
+    }
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+    }
+    private var preItem: MenuItem? = null
+    override fun onPageSelected(position: Int) {
+        if (preItem != null)
+            preItem!!.isChecked = false
+        else
+            bottomNav.menu.getItem(0).isChecked = false
+
+        bottomNav.menu.getItem(position).isChecked = true
+        preItem = bottomNav.menu.getItem(position)
+
+        when(position) {
+            0 -> { pagerTitle.text = resources.getText(R.string.todaysLunch) }
+            1 -> { pagerTitle.text = resources.getText(R.string.monthlySchedule) }
+            2 -> { pagerTitle.text = resources.getText(R.string.classSchedule) }
+            else -> { pagerTitle.text = resources.getText(R.string.errorString) }
+        }
     }
 
     private fun startRevealActivity(view: View) {
