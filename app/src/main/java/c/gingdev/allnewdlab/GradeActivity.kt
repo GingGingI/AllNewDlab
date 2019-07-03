@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import c.gingdev.allnewdlab.utils.ColorChecker
@@ -60,6 +61,7 @@ class GradeActivity: AppCompatActivity() {
     private fun setLayout() {
         setPickers()
         doneBtn.setOnClickListener {
+            Toast.makeText(applicationContext, "앱재시작 후 적용됩니다.", Toast.LENGTH_LONG).show()
             onItemPicked()
         }
     }

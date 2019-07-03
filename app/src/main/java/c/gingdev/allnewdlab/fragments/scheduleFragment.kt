@@ -59,6 +59,7 @@ class scheduleFragment: Fragment(),
      */
     override fun successToReceive(item: ItemModel) {
         if (!item.template.outputs[0].simpleText.text.contains("값없음")) {
+            Log.e("datas", item.template.outputs[0].simpleText.text)
             val arrays = item
                 .template.outputs[0].simpleText.text.split("\n").toMutableList()
                 .also {
@@ -75,6 +76,14 @@ class scheduleFragment: Fragment(),
     override fun failedToReceive() {
         finishLoading()
         Toast.makeText(context, "데이터 받아오기 실패!", Toast.LENGTH_SHORT).show()
+        onFailedView.visibility = View.VISIBLE
+
+        restartBtn.setOnClickListener {
+            onFailedView.visibility = View.GONE
+
+            startLoading()
+            presenter.receiveScheduleData()
+        }
     }
 
 }
