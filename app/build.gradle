@@ -11,8 +11,8 @@ android {
         applicationId "c.gingdev.allnewdlab"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 19070301
+        versionName "1.0.0-beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -28,7 +28,10 @@ class scheduleHolder(val parent: ViewGroup)
                 period.setTextColor(getTextColor())
                 period.text = period_time
                 className.text = classname
-                classRoom.text = classroom
+                if (classroom == "0호")
+                    classRoom.text = "창체활동"
+                else
+                    classRoom.text = classroom
             }
         }
     }

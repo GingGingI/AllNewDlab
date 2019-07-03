@@ -61,7 +61,8 @@ class GradeActivity: AppCompatActivity() {
     private fun setLayout() {
         setPickers()
         doneBtn.setOnClickListener {
-            Toast.makeText(applicationContext, "앱재시작 후 적용됩니다.", Toast.LENGTH_LONG).show()
+            if (dataNotNull())
+                Toast.makeText(applicationContext, "앱재시작 후 적용됩니다.", Toast.LENGTH_LONG).show()
             onItemPicked()
         }
     }
