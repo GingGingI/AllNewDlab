@@ -4,12 +4,12 @@
           android:enabled="true"
           android:icon="@drawable/ic_food"
           android:title="@string/lunch"/>
-    <item android:id="@+id/calendar"
-          android:enabled="true"
-          android:icon="@drawable/ic_calendar"
-          android:title="@string/monthly"/>
     <item android:id="@+id/schedule"
           android:enabled="true"
           android:icon="@drawable/ic_schedule"
           android:title="@string/schedule"/>
+    <item android:id="@+id/calendar"
+          android:enabled="true"
+          android:icon="@drawable/ic_calendar"
+          android:title="@string/monthly"/>
 </menu>

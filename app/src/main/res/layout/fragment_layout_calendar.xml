@@ -39,8 +39,8 @@
 
                 android:layout_margin="16dp"
 
-                android:textSize="24sp"
-                android:text="다시한번 시도해주세요"/>
+                android:textSize="17sp"
+                android:text="@string/tryAgain"/>
         <ImageButton
                 android:id="@+id/restartBtn"
                 android:layout_width="35dp"

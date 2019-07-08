@@ -62,12 +62,14 @@ class foodFragment: Fragment(),
             .apply { this[0] = this[0].split("\n")[this[0].split("\n").size - 1] }
             .also { it.removeAt(0) }
 
+        if (arrays.size < 1)
+            noFoodView.visibility = View.VISIBLE
         setRecycler(arrays.toList())
     }
 
     override fun failedToReceive() {
         finishLoading()
-        Toast.makeText(context, "데이터 받아오기 실패!", Toast.LENGTH_SHORT).show()
+        noFoodView.visibility = View.GONE
         onFailedView.visibility = View.VISIBLE
 
         restartBtn.setOnClickListener {

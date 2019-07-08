@@ -80,14 +80,14 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     private lateinit var fragmentAdpater: fragmentPagerAdapter
     private val fmList = arrayListOf<Fragment>().apply {
         add(foodFragment.getInstance())
-        add(calendarFragment.getInstance())
         add(scheduleFragment.getInstance())
+        add(calendarFragment.getInstance())
     }
     private fun setFragment() {
         fragmentAdpater = fragmentPagerAdapter(supportFragmentManager)
         fragmentAdpater.addItem(foodFragment())
-        fragmentAdpater.addItem(calendarFragment())
         fragmentAdpater.addItem(scheduleFragment())
+        fragmentAdpater.addItem(calendarFragment())
 
         pager.apply {
             adapter = fragmentAdpater

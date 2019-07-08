@@ -74,7 +74,6 @@ class scheduleFragment: Fragment(),
 
     override fun failedToReceive() {
         finishLoading()
-        Toast.makeText(context, "데이터 받아오기 실패!", Toast.LENGTH_SHORT).show()
         onFailedView.visibility = View.VISIBLE
 
         restartBtn.setOnClickListener {

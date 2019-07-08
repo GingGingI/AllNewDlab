@@ -22,6 +22,28 @@
             android:minHeight="50dp"
             android:layout_centerInParent="true"/>
 
+
+    <LinearLayout
+            android:id="@+id/noFoodView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:visibility="gone"
+
+            android:layout_centerInParent="true">
+
+        <TextView
+                android:id="@+id/noFoodText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="16dp"
+
+                android:textSize="17sp"
+                android:text="@string/noFood"/>
+    </LinearLayout>
+
     <LinearLayout
             android:id="@+id/onFailedView"
             android:layout_width="wrap_content"
@@ -39,8 +61,8 @@
 
                 android:layout_margin="16dp"
 
-                android:textSize="24sp"
-                android:text="다시한번 시도해주세요"/>
+                android:textSize="17sp"
+                android:text="@string/tryAgain"/>
         <ImageButton
                 android:id="@+id/restartBtn"
                 android:layout_width="35dp"
