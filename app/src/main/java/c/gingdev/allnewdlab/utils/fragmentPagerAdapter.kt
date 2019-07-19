@@ -16,8 +16,8 @@ class fragmentPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm, BEHAVI
 
     override fun getItem(position: Int): Fragment = when (items[position]) {
         is foodFragment -> { foodFragment.getInstance() }
-        is calendarFragment -> { calendarFragment.getInstance() }
         is scheduleFragment -> { scheduleFragment.getInstance() }
+        is calendarFragment -> { calendarFragment.getInstance() }
         else -> Fragment()
     }
 

@@ -41,6 +41,7 @@
 
                 android:textSize="17sp"
                 android:textAlignment="center"
+                android:textColor="?android:attr/textColor"
                 android:text="@string/tryAgainSchedule"/>
         <ImageButton
                 android:id="@+id/restartBtn"

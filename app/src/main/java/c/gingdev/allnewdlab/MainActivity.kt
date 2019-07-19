@@ -40,9 +40,16 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         statusBar.layoutParams = ConstraintLayout.LayoutParams(statusBar.width, getStatusBarHeight())
     }
     private fun clearStatusBar() {
-        window.apply {
-                setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.run {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                statusBarColor = 0x00000000  // transparent
+            } else {
+                addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            }
+
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
     }
     private fun getStatusBarHeight(): Int {
@@ -103,10 +110,10 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
                 R.id.food -> {
                     pager.setCurrentItem(0, true)
                 }
-                R.id.calendar -> {
+                R.id.schedule -> {
                     pager.setCurrentItem(1, true)
                 }
-                R.id.schedule -> {
+                R.id.calendar -> {
                     pager.setCurrentItem(2, true)
                 }
                 else -> {
@@ -152,8 +159,8 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
         when(position) {
             0 -> { pagerTitle.text = resources.getText(R.string.todaysLunch) }
-            1 -> { pagerTitle.text = resources.getText(R.string.monthlySchedule) }
-            2 -> { pagerTitle.text = resources.getText(R.string.classSchedule) }
+            1 -> { pagerTitle.text = resources.getText(R.string.classSchedule) }
+            2 -> { pagerTitle.text = resources.getText(R.string.monthlySchedule) }
             else -> { pagerTitle.text = resources.getText(R.string.errorString) }
         }
     }

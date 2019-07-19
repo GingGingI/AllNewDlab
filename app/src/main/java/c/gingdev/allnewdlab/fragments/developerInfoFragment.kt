@@ -38,7 +38,7 @@ class developerInfoFragment: Fragment() {
     private fun setRecycler(arrays: List<Pair<String, String>>) {
         adapter = copyRightAdapter(arrays).also {
             recycler.adapter = it
-            recycler.layoutManager = LinearLayoutManager(context)
+            recycler.layoutManager = LinearLayoutManager(context?.applicationContext)
 
             it.notifyDataSetChanged()
         }

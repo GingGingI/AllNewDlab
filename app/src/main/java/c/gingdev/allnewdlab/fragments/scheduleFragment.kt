@@ -35,10 +35,10 @@ class scheduleFragment: Fragment(),
     private lateinit var presenter: schedulePresenter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAnim(view.context, loadingLottie)
+        initAnim(view.context.applicationContext, loadingLottie)
 
         startLoading()
-        presenter = schedulePresenter(view.context, this)
+        presenter = schedulePresenter(view.context.applicationContext, this)
 
         presenter.receiveScheduleData()
     }
@@ -47,7 +47,7 @@ class scheduleFragment: Fragment(),
     private fun setRecycler(arrays: List<String>) {
         adapter = scheduleAdapter(arrays).also {
             recycler.adapter = it
-            recycler.layoutManager = LinearLayoutManager(context)
+            recycler.layoutManager = LinearLayoutManager(context?.applicationContext)
 
             finishLoading()
             it.notifyDataSetChanged()

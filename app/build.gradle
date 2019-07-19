@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -11,8 +9,8 @@ android {
         applicationId "c.gingdev.allnewdlab"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 19070301
-        versionName "1.0.0-beta1"
+        versionCode 19070802
+        versionName "1.0.0-beta2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

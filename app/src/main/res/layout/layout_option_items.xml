@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
 
             android:textSize="18sp"
-            android:textColor="#333"
+            android:textColor="?android:attr/textColor"
 
             android:layout_margin="12dp"
 
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
 
-            android:background="@color/colorWhite"
+            android:background="?android:attr/colorBackground"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

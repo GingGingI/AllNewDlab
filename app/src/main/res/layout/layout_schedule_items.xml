@@ -31,7 +31,7 @@
             android:layout_marginStart="17dp"
 
             android:textSize="14sp"
-            android:textColor="@color/colorBlack"
+            android:textColor="?android:attr/textColor"
             android:gravity="center"
 
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
 
             android:textSize="12sp"
-            android:textColor="@color/colorGray"
+            android:textColor="?android:attr/textColor"
             android:gravity="center"
 
             app:layout_constraintTop_toBottomOf="@id/className"

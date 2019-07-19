@@ -34,10 +34,10 @@ class foodFragment: Fragment(),
     private lateinit var presenter: foodPresenter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAnim(view.context, loadingLottie)
+        initAnim(view.context.applicationContext, loadingLottie)
 
         startLoading()
-        presenter = foodPresenter(view.context, this)
+        presenter = foodPresenter(view.context.applicationContext, this)
 
         presenter.receiveFoodData()
     }
@@ -46,7 +46,7 @@ class foodFragment: Fragment(),
     private fun setRecycler(arrays: List<String>) {
         adapter = foodAdapter(arrays).also {
             recycler.adapter = it
-            recycler.layoutManager = LinearLayoutManager(context)
+            recycler.layoutManager = LinearLayoutManager(context?.applicationContext)
 
             finishLoading()
             it.notifyDataSetChanged()

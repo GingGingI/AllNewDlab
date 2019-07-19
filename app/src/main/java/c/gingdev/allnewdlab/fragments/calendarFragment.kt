@@ -35,10 +35,10 @@ class calendarFragment: Fragment(),
     private lateinit var presenter: calendarPresenter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAnim(view.context, loadingLottie)
+        initAnim(view.context.applicationContext, loadingLottie)
 
         startLoading()
-        presenter = calendarPresenter(view.context, this)
+        presenter = calendarPresenter(view.context.applicationContext, this)
 
         presenter.receiveCalendarData()
     }
@@ -47,7 +47,7 @@ class calendarFragment: Fragment(),
     private fun setRecycler(arrays: List<String>) {
         adapter = calendarAdapter(arrays).also {
             recycler.adapter = it
-            recycler.layoutManager = LinearLayoutManager(context)
+            recycler.layoutManager = LinearLayoutManager(context?.applicationContext)
 
             finishLoading()
             it.notifyDataSetChanged()

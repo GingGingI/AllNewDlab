@@ -62,6 +62,7 @@
                 android:layout_margin="16dp"
 
                 android:textSize="17sp"
+                android:textColor="?android:attr/textColor"
                 android:text="@string/tryAgain"/>
         <ImageButton
                 android:id="@+id/restartBtn"
