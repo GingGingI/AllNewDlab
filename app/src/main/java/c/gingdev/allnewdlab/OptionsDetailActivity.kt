@@ -29,21 +29,13 @@ class OptionsDetailActivity: AppCompatActivity() {
     }
     private fun initStatusBar() {
         clearStatusBar()
-        statusBar.layoutParams = ConstraintLayout.LayoutParams(statusBar.width, getStatusBarHeight())
     }
     private fun clearStatusBar() {
-        window.apply {
-            setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.run {
+            decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
-    }
-    private fun getStatusBarHeight(): Int {
-        var result = 0
-        val resourceID = resources.getIdentifier("status_bar_height", "dimen", "android")
-        if (resourceID > 0)
-            result = resources.getDimensionPixelSize(resourceID)
-        return result
     }
 
     private fun backGroundColorChanged() {

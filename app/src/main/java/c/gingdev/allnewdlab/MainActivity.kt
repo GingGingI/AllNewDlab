@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
@@ -25,33 +26,29 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initStatusBar()
         setFragment()
         setNavigation()
         initLayout()
 
         Runnable {
             backGroundColorChanged()
+            initStatusBar()
         }.run()
     }
 
     private fun initStatusBar() {
         clearStatusBar()
-        statusBar.layoutParams = ConstraintLayout.LayoutParams(statusBar.width, getStatusBarHeight())
     }
     private fun clearStatusBar() {
         window.run {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                statusBarColor = 0x00000000  // transparent
-            } else {
-                addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            }
-
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
     }
+   /*
+   Status bar의 height 를 px단위로 구하는 코드
+
     private fun getStatusBarHeight(): Int {
         var result = 0
         val resourceID = resources.getIdentifier("status_bar_height", "dimen", "android")
@@ -59,17 +56,19 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
             result = resources.getDimensionPixelSize(resourceID)
         return result
     }
+    */
 
     private fun backGroundColorChanged() {
         var color: Int
         if (ColorChecker(parentView).isLight()) {
-//            현재 어두움.
+//            현제 밝음
             color = ContextCompat.getColor(this, R.color.colorBlack)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
         } else {
-//            현제 밝음
+//            현재 어두움.
             color = ContextCompat.getColor(this, R.color.colorWhite)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
