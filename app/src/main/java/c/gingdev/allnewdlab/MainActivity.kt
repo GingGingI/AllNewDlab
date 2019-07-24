@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+        clearStatusBar()
 
         setFragment()
         setNavigation()
@@ -32,15 +34,15 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
         Runnable {
             backGroundColorChanged()
-            initStatusBar()
         }.run()
     }
 
-    private fun initStatusBar() {
-        clearStatusBar()
-    }
     private fun clearStatusBar() {
         window.run {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = 0x00000000
+
             decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE

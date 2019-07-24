@@ -19,7 +19,7 @@ class OptionsDetailActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options_detail)
 
-        initStatusBar()
+        clearStatusBar()
         checkIntentState()
         initFragment()
 
@@ -27,11 +27,13 @@ class OptionsDetailActivity: AppCompatActivity() {
             backGroundColorChanged()
         }.run()
     }
-    private fun initStatusBar() {
-        clearStatusBar()
-    }
+
     private fun clearStatusBar() {
         window.run {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = 0x00000000
+
             decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE

@@ -26,7 +26,7 @@ class OptionsActivity: AppCompatActivity() {
         setContentView(R.layout.activity_options)
 
         revealActivity = revealAnimation(parentView, this, intent)
-        initStatusBar()
+        clearStatusBar()
         initLayout()
 
         Runnable {
@@ -34,11 +34,12 @@ class OptionsActivity: AppCompatActivity() {
         }.run()
     }
 
-    private fun initStatusBar() {
-        clearStatusBar()
-    }
     private fun clearStatusBar() {
         window.run {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = 0x00000000
+
             decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE
